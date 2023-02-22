@@ -12,6 +12,8 @@ const db = mysql.createPool({
     database: "myapp", 
 });
 
+// console.log(db)
+
 app.use(cors())
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended: true}))
@@ -19,6 +21,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.get('/api/get',(req, res) => {
     const sqlSelect = "SELECT * FROM login_data;"
     db.query(sqlSelect, (err, result) =>{
+        // console.log(result)
         res.send(result)
     })
 })
